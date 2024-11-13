@@ -1,10 +1,10 @@
-import { Dialect, SequelizeOptions } from 'sequelize';
+import { Dialect, Options } from 'sequelize';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 interface Config {
-	[key: string]: SequelizeOptions;
+	[key: string]: Options;
 }
 
 const config: Config = {
