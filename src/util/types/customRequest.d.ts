@@ -7,5 +7,6 @@ declare module 'express' {
 			message: string;
 			data?: object;
 		};
+		uploadInfo?: object;
 	}
 }
