@@ -1,36 +1,30 @@
-import { Dialect, Options } from 'sequelize';
 import dotenv from 'dotenv';
 
+// Load environment variables from .env file
 dotenv.config();
 
-interface Config {
-	[key: string]: Options;
-}
-
-const config: Config = {
+module.exports = {
 	development: {
-		username: process.env.DB_USERNAME as string,
-		password: process.env.DB_PASSWORD as string,
-		database: process.env.DB_DEV_DATABASE as string,
-		host: process.env.DB_HOST as string,
-		port: parseInt(process.env.DB_PORT as string, 10),
-		dialect: 'mysql' as Dialect,
+		username: process.env.DB_USERNAME,
+		password: process.env.DB_PASSWORD,
+		database: process.env.DB_DEV_DATABASE,
+		host: process.env.DB_HOST,
+		port: process.env.DB_PORT,
+		dialect: 'mysql',
 	},
 	test: {
-		username: process.env.DB_USERNAME as string,
-		password: process.env.DB_PASSWORD as string,
-		database: process.env.DB_TEST_DATABASE as string,
-		host: process.env.DB_HOST as string,
-		dialect: 'mysql' as Dialect,
+		username: process.env.DB_USERNAME,
+		password: process.env.DB_PASSWORD,
+		database: process.env.DB_TEST_DATABASE,
+		host: process.env.DB_HOST,
+		dialect: 'mysql',
 		logging: false,
 	},
 	production: {
-		username: process.env.DB_USERNAME as string,
-		password: process.env.DB_PASSWORD as string,
-		database: process.env.DB_PROD_DATABASE as string,
-		host: process.env.DB_HOST as string,
-		dialect: 'mysql' as Dialect,
+		username: process.env.DB_USERNAME,
+		password: process.env.DB_PASSWORD,
+		database: process.env.DB_PROD_DATABASE,
+		host: process.env.DB_HOST,
+		dialect: 'mysql',
 	},
 };
-
-export default config;
