@@ -1,7 +1,7 @@
-import path from 'path';
+const path = require('path');
 
-export default {
-	config: path.resolve('src', 'config', 'sequelize.config.js'),
+module.exports = {
+	config: path.resolve('dist', 'src', 'config', 'sequelize.config.js'),
 	'models-path': path.resolve('src', 'db', 'model'),
 	'seeders-path': path.resolve('src', 'db', 'seeder'),
 	'migrations-path': path.resolve('src', 'db', 'migration'),
