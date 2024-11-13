@@ -2,14 +2,16 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
 
 interface UserAttributes {
-	username: string;
+	first_name: string;
+	last_name: string;
 	hash: string;
 	email: string;
 }
 
 module.exports = (sequelize: Sequelize) => {
 	class User extends Model<UserAttributes> implements UserAttributes {
-		public username!: string;
+		public first_name!: string;
+		public last_name!: string;
 		public hash!: string;
 		public email!: string;
 
@@ -20,12 +22,18 @@ module.exports = (sequelize: Sequelize) => {
 		 */
 		static associate(models: any) {
 			// define association here
+			// user has many uploads
+			User.hasMany(models.Uploads, { foreignKey: 'user_id' });
 		}
 	}
 
 	User.init(
 		{
-			username: {
+			first_name: {
+				type: DataTypes.STRING,
+				allowNull: false,
+			},
+			last_name: {
 				type: DataTypes.STRING,
 				allowNull: false,
 			},
