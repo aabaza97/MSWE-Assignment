@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Email Template</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				background-color: #f4f4f4;
+			}
+			.container {
+				width: 100%;
+				max-width: 600px;
+				margin: 0 auto;
+				background-color: #ffffff;
+				padding: 20px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			}
+			.header {
+				text-align: center;
+				padding: 10px 0;
+				background-color: #007bff;
+				color: #ffffff;
+			}
+			.content {
+				padding: 20px;
+				line-height: 1.6;
+			}
+			.footer {
+				text-align: center;
+				padding: 10px 0;
+				background-color: #f4f4f4;
+				color: #777777;
+			}
+			@media (max-width: 600px) {
+				.container {
+					padding: 10px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<h1>{{subject}}</h1>
+			</div>
+			<div class="content">
+				<p>Hey {{fname}},</p>
+				<p>
+					You've entered this email as your App account email address.
+					<br />
+					Now it’s time to make sure it’s really you.
+				</p>
+				<p>Enter this OTP in your App.</p>
+				<p class="button" style="margin-top: 30px; font-size: 24px">{{OTP}}</p>
+
+				If you don't know what this email is, you may have recieved it by mistake.
+				<br />
+				Simply, ignore it.
+				<p>Best regards,<br />App Team</p>
+			</div>
+			<div class="footer">
+				<p>&copy; App Company. All rights reserved.</p>
+			</div>
+		</div>
+	</body>
+</html>

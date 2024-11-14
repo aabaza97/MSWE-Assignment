@@ -14,11 +14,11 @@ enum EmailTypes {
 const Emails = {
 	[EmailTypes.emailVerification]: {
 		subject: 'App | Verify Email',
-		source: path.join(__dirname, '../../view/template.html'),
+		source: path.join(__dirname, './view/template.html'),
 	},
 	[EmailTypes.passwordReset]: {
 		subject: 'App | Account Reset',
-		source: path.join(__dirname, '../../view/template.html'),
+		source: path.join(__dirname, './view/template.html'),
 	},
 };
 
