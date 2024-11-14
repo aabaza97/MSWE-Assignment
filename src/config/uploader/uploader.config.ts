@@ -4,7 +4,7 @@ import { Request } from 'express';
 type Destination = (
 	req: Request,
 	file: Express.Multer.File,
-	callback: (error: Error | null, destination: string) => void
+	callback: (error: Error | null, destination: string) => void | undefined
 ) => void;
 
 type Filename = (

@@ -2,7 +2,7 @@ import errors from 'http-errors';
 import { Request } from 'express';
 
 type CustomName = (req: any, file: any) => string;
-type MulterCB = (error: Error | null, filename?: string) => void;
+type MulterCB = (error: Error | null, filename: string) => void;
 
 /**
  * Creates a file name with custom name function if provided. Otherwise, defaults to the current timestamp + the original file name.
@@ -35,7 +35,7 @@ const filename = (customName: CustomName) => (req: Request, file: Express.Multer
 
 		return cb(null, newName);
 	} catch (error: Error | any) {
-		return cb(error);
+		return cb(error, '');
 	}
 };
 

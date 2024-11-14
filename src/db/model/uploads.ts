@@ -5,6 +5,7 @@ interface UploadsAttributes {
 	name: string;
 	type: string;
 	user_id: string;
+	path: string;
 }
 
 module.exports = (sequelize: Sequelize) => {
@@ -12,7 +13,7 @@ module.exports = (sequelize: Sequelize) => {
 		public name!: string;
 		public type!: string;
 		public user_id!: string;
-
+		public path!: string;
 		/**
 		 * Helper method for defining associations.
 		 * This method is not a part of Sequelize lifecycle.
@@ -29,6 +30,7 @@ module.exports = (sequelize: Sequelize) => {
 			name: DataTypes.STRING,
 			type: DataTypes.ENUM('image', 'video', 'audio', 'document'),
 			user_id: DataTypes.STRING,
+			path: DataTypes.STRING,
 		},
 		{
 			sequelize,

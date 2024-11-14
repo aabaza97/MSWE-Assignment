@@ -3,7 +3,7 @@ import errors from 'http-errors';
 import { Request } from 'express';
 
 type CustomDestination = (req: Request, file: Express.Multer.File) => { storage: string; uploadPath: string };
-type MulterCB = (error: Error | null, destination?: string) => void;
+type MulterCB = (error: Error | null, destination: string) => void;
 
 /**
  * Creates a destination folder with custom destination function if provided. Otherwise, defaults to the root folder.
@@ -45,7 +45,7 @@ const dest = (customDestination: CustomDestination) => (req: Request, file: Expr
 
 		return cb(null, uploadPath);
 	} catch (error: Error | any) {
-		return cb(errors.UnprocessableEntity(error.message || 'msg_unprocessable_entity'));
+		return cb(errors.UnprocessableEntity(error.message || 'msg_unprocessable_entity'), '');
 	}
 };
 

@@ -24,6 +24,13 @@ module.exports = {
 				foreignKey: true,
 				allowNull: false,
 			},
+			name: {
+				type: Sequelize.STRING,
+			},
+			path: {
+				type: Sequelize.STRING,
+				allowNull: false,
+			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE,
