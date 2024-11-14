@@ -8,5 +8,10 @@ declare module 'express' {
 			data?: object;
 		};
 		uploadInfo?: object;
+		user?: {
+			id?: number;
+			email?: string;
+			device_id?: string;
+		};
 	}
 }
