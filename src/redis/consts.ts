@@ -9,3 +9,14 @@ export enum CacheKey {
 	TokenForUserDevice = 'tfu',
 	PasswordReset = 'pr',
 }
+
+export interface UserCacheData {
+	id?: number;
+	email: string;
+	first_name: string;
+	last_name: string;
+	hash: string;
+	provider_id?: string;
+	provider?: string;
+	otp?: string | number;
+}

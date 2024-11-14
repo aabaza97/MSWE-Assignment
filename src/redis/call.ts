@@ -1,5 +1,5 @@
 import RedisClient from '../config/redis.config';
-import { CacheKey } from './consts';
+import { CacheKey, UserCacheData } from './consts';
 
 /**
  * @param {String} emailKey - the key used to store the email verification data

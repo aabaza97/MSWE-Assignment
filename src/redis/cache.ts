@@ -1,5 +1,5 @@
 import errors from 'http-errors';
-import RedisClient from '../config/redis.config';
+import { RedisClient } from '../config';
 import { CachePolicy, CacheKey } from './consts';
 
 interface TokenForDeviceForUserData {

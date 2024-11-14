@@ -11,7 +11,7 @@ import * as call from './call';
 /**
  * @description the redis cache policy helper module
  */
-import { CacheKey, CachePolicy } from './consts';
+import { CacheKey, CachePolicy, UserCacheData } from './consts';
 
 /**
  * @description the redis invalidator helper module
@@ -19,4 +19,4 @@ import { CacheKey, CachePolicy } from './consts';
 import * as invalidate from './invalidate';
 
 // Export the modules as a single object
-export { cache, call, CacheKey, CachePolicy, invalidate };
+export { cache, call, CacheKey, CachePolicy, UserCacheData, invalidate };
