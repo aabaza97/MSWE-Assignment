@@ -7,7 +7,12 @@ declare module 'express' {
 			message: string;
 			data?: object;
 		};
-		uploadInfo?: object;
+		uploadInfo?: {
+			storage?: string;
+			uploadPath?: string;
+			filename?: string;
+			uploadType?: string;
+		};
 		user?: {
 			id?: number;
 			email?: string;
