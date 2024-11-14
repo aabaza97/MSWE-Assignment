@@ -27,7 +27,7 @@ module.exports = (sequelize: Sequelize) => {
 	Uploads.init(
 		{
 			name: DataTypes.STRING,
-			type: DataTypes.ENUM,
+			type: DataTypes.ENUM('image', 'video', 'audio', 'document'),
 			user_id: DataTypes.STRING,
 		},
 		{
