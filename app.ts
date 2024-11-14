@@ -19,7 +19,7 @@ app.post('*', Express.json());
 app.put('*', Express.json());
 
 // Use the main app router
-app.use(AppRouter);
+app.use('/api', AppRouter);
 
 // Use the responder middleware
 app.use(AppMiddleware.responder);

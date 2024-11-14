@@ -30,6 +30,7 @@ queue.process(QUEUE_NAME, 2, async (job, done) => {
 		// 	return;
 		// }
 	} catch (error: Error | any) {
+		console.log(`Failed Email Sending due to\n ${error}`);
 		done(error);
 	}
 });
