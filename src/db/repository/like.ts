@@ -12,7 +12,13 @@ export interface DBLike {
  * @returns {Promise<Like>} - newly created like
  * @throws {Error} - if there is an error in the database
  */
-export const like = async (like: DBLike): Promise<DBLike> => await UserLikes.create(like);
+export const like = async (like: DBLike): Promise<[DBLike, boolean]> => {
+	// await UserLikes.create(like);
+	return await UserLikes.findOrCreate({
+		where: { user_id: like.user_id, upload_id: like.upload_id },
+		defaults: like,
+	});
+};
 
 /**
  * Deletes a like by user id and upload id

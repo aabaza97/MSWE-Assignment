@@ -19,7 +19,13 @@ const like = async (req: Request, res: Response, next: NextFunction) => {
 			user_id: req.user.id,
 			upload_id: parseInt(req.params.id),
 		} satisfies Like.DBLike;
-		const liked = await Like.like(like);
+
+		const [liked, created] = await Like.like(like);
+
+		// check if media is already liked
+		if (!created) {
+			throw errors.Conflict('msg_media_already liked');
+		}
 
 		// return success message
 		req.response = {
