@@ -5,17 +5,23 @@
 A media sharing platform allows users to upload images or videos, view a list of
 all images and videos, and like/unlike them.
 
-## User Stories
+## Simple User Stories
 
--   As a visitor, I can sign up for an account.
--   As a user, I can log in to my account.
--   As a user, I can upload an image or video.
--   As a user, I can view a list of all images and videos.
--   As a user, I can like/unlike an image or video.
--   As a user, I can view a list of all images and videos that I have liked.
--   As a user, I can delete an image or video that I have uploaded.
--   As a user, I can share an image or video with other users.
--   As a user, I can log out of my account.
+-   [x] As a visitor, I can sign up for an account.
+-   [x] As a user, I can log in to my account.
+-   [x] As a user, I can upload an image or video.
+-   [x] As a user, I can view a list of all images and videos.
+-   [x] As a user, I can like/unlike an image or video.
+-   [x] As a user, I can view a list of all images and videos that I have liked.
+-   [x] As a user, I can delete an image or video that I have uploaded.
+-   [x] As a user, I can log out of my account.
+-   [x] As a user, I can reset my password.
+
+-   [ ] As a user, I can share an image or video with other users.
+-   [ ] As a user, I can delete my password.
+-   [ ] As a user, I can filter images and videos by category.
+-   [ ] As a user, I can search for images and videos by title.
+-   [ ] As a user, I can view my storage usage.
 
 ## App Structure
 
