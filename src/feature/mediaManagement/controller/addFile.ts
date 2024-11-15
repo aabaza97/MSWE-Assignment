@@ -34,7 +34,7 @@ const addFile = async (req: Request, res: Response, next: NextFunction) => {
 		const newFile = await Upload.addUpload(file);
 
 		// construct download url
-		const donwloadURL = `${process.env.HOST_DOMAIN}/image/${req.user.id}/${newFile.name}`;
+		const donwloadURL = `${process.env.HOST_DOMAIN}/${newFile.type}/${req.user.id}/${newFile.name}`;
 
 		// send response
 		req.response = {
@@ -44,7 +44,6 @@ const addFile = async (req: Request, res: Response, next: NextFunction) => {
 		};
 		next();
 	} catch (error) {
-		console.dir(error);
 		next(error);
 	}
 };

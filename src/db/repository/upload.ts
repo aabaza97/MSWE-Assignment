@@ -48,8 +48,16 @@ export const findUploadById = async (id: number): Promise<DBUpload> => await Upl
  * @returns {Promise<Upload[]>} - uploads with the given user id
  * @throws {Error} - if there is an error in the database
  */
-export const findUploadsByUserId = async (user_id: string): Promise<DBUpload[]> =>
-	await Uploads.findAll({ where: { user_id } });
+export const findUploadsByUserId = async (
+	user_id: string,
+	limit: number = 10,
+	offset: number = 0
+): Promise<DBUpload[]> => {
+	const _limit = Math.max(limit, 10);
+	const _offset = Math.max(offset, 0);
+
+	return await Uploads.findAll({ where: { user_id }, limit: _limit, offset: _offset });
+};
 
 /**
  * Deletes an upload by id

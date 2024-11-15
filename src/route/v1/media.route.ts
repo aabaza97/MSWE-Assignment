@@ -7,7 +7,7 @@ const router = Router();
 router.put('/images', MediaUploader.uploadImage, MediaManager.save);
 router.put('/movies', MediaUploader.uploadMovie, MediaManager.save);
 
-// router.get('/', MediaManager.getAllMedia);
+router.get('/:page?', MediaManager.getUserUploads);
 // router.get('/:id', MediaManager.getSingleMedia);
 // router.get('/user', MediaManager.getUserMedia);
 

@@ -1,7 +1,7 @@
 > auth.http
 
 @baseURL = http://localhost:3000/api/v1/media
-@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhYWJhemEzMkBnbWFpbC5jb20iLCJkZXZpY2VfaWQiOiJkNGY1MTVjNDdjZTNkZGE3OWZkOTcyYzYxNTljMGMwMyIsImlhdCI6MTczMTY4Mjc3NCwiZXhwIjoxNzMxNjgzMzc0fQ.hBEfmH8hGCbvy2mBRwVYDwT8HdsnfSf793KUz08c210
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhYWJhemEzMkBnbWFpbC5jb20iLCJkZXZpY2VfaWQiOiI3YWY0N2VmZjlmM2JkMWRmNWYxODQ5YTQwMmY2NGViNyIsImlhdCI6MTczMTY4NzQyMSwiZXhwIjoxNzMxNjg4MDIxfQ.8tewhtoweC1XhBz8c9ufbKPmP1GB_pB-tbJ8OYnUxCs
 
 ### Upload Image
 PUT  {{baseURL}}/images HTTP/1.1
@@ -14,3 +14,22 @@ Content-Type: image/jpeg
 
 < ../../../../../Downloads/00006_00.jpg 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+
+### Upload Video
+PUT  {{baseURL}}/movies HTTP/1.1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: Bearer {{access_token}}
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="movie"; filename="movie.mp4"
+Content-Type: video/mp4
+
+< ../../../../../Downloads/00006_00.mp4
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Get all media
+@page = 0
+GET  {{baseURL}}/{{page}} HTTP/1.1
+Authorization: Bearer {{access_token}}
+
