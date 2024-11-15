@@ -4,16 +4,20 @@ import { Model, DataTypes, Sequelize } from 'sequelize';
 interface UserAttributes {
 	first_name: string;
 	last_name: string;
-	hash: string;
+	hash?: string;
 	email: string;
+	provider?: string;
+	provider_id?: string;
 }
 
 module.exports = (sequelize: Sequelize) => {
 	class User extends Model<UserAttributes> implements UserAttributes {
 		public first_name!: string;
 		public last_name!: string;
-		public hash!: string;
+		public hash?: string;
 		public email!: string;
+		public provider?: string;
+		public provider_id?: string;
 
 		/**
 		 * Helper method for defining associations.
@@ -39,11 +43,16 @@ module.exports = (sequelize: Sequelize) => {
 			},
 			hash: {
 				type: DataTypes.STRING,
-				allowNull: false,
 			},
 			email: {
 				type: DataTypes.STRING,
 				allowNull: false,
+			},
+			provider: {
+				type: DataTypes.STRING,
+			},
+			provider_id: {
+				type: DataTypes.STRING,
 			},
 		},
 		{

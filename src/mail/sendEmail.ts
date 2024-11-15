@@ -8,7 +8,7 @@ const fromName = 'App';
 const sendEmail = async (replacements: any, emailTo: string, configuration: any) => {
 	// authroize transporter
 	const transporter = nodemailer.createTransport({
-		host: 'smtp.gmaill.com',
+		host: 'smtp.gmail.com',
 		port: 465,
 		secure: true, // Use `true` for port 465, `false` for all other ports
 		auth: {

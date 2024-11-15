@@ -60,7 +60,13 @@ export const update = async (user: DBUser): Promise<DBUser> => await User.update
  * @throws {Error} - if there is an error in the database
  * @description - deletes a user given their email
  */
-export const upsert = async ({ email, first_name, last_name, provider_id }: DBUser): Promise<[DBUser, boolean]> =>
+export const upsert = async ({
+	email,
+	first_name,
+	last_name,
+	provider_id,
+	provider,
+}: DBUser | NewDBUser): Promise<[DBUser, boolean]> =>
 	await User.findOrCreate({
 		where: { email },
 		defaults: {
@@ -68,7 +74,11 @@ export const upsert = async ({ email, first_name, last_name, provider_id }: DBUs
 			first_name,
 			last_name,
 			provider_id,
+			provider,
 		},
 	});
 
 export const remove = async (id: number) => await User.destroy({ where: { id } });
+
+export const updateOAuthProvider = async (id: number, { provider, provider_id }: DBUser | NewDBUser): Promise<DBUser> =>
+	await User.update({ provider, provider_id }, { where: { id } });

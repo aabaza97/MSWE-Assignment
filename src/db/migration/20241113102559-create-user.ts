@@ -20,6 +20,12 @@ module.exports = {
 			email: {
 				type: Sequelize.STRING,
 			},
+			provider: {
+				type: Sequelize.STRING,
+			},
+			provider_id: {
+				type: Sequelize.STRING,
+			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE,

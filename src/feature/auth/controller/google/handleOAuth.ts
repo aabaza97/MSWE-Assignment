@@ -1,3 +1,4 @@
+import path from 'path';
 import { Request, Response, NextFunction } from 'express';
 import errors from 'http-errors';
 import { generateAuthTokens, getGoogleOAuthToken, getGoogleUserInfo } from '../../helper';
@@ -27,20 +28,28 @@ const handleOAuth = async (req: Request, res: Response, next: NextFunction) => {
 			email: userInfo.email,
 			first_name: userInfo.given_name,
 			last_name: userInfo.family_name,
-			id: userInfo.sub,
 			hash: '',
-		} satisfies User.DBUser;
-		const [createdUser] = await User.upsert(user);
+		} satisfies User.NewDBUser;
+
+		let [dbUser, created] = await User.upsert(user);
+
+		// Update user info if not created and no provider info
+		if (!created && !dbUser.provider && !dbUser.provider_id) {
+			// Update user info
+			dbUser = await User.updateOAuthProvider(dbUser.id, user);
+		}
 
 		// Get access & refresh token (login)
-		const tokens = await generateAuthTokens(createdUser);
+		const tokens = await generateAuthTokens(dbUser);
 
 		// Send response
-		return res.render('OAuthSuccess', { user: createdUser, tokens }, (err, html) => {
-			if (err) throw err;
-			res.send(html);
-		});
+		// return res.render('OAuthSuccess', { user: dbUser, tokens }, (err, html) => {
+		// 	if (err) throw err;
+		// 	res.send(html);
+		// });
+		return res.sendFile(path.join(__dirname, '../../../../../../public/view/oAuthSucess.html'));
 	} catch (error) {
+		console.log(error);
 		return next(error);
 	}
 };
