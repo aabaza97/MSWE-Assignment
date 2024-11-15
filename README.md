@@ -7,7 +7,7 @@ all images and videos, and like/unlike them.
 
 ## Simple User Stories
 
--   [x] As a visitor, I can sign up for an account.
+-   [x] As a visitor, I can sign up for an account using JWT or OAuth.
 -   [x] As a user, I can log in to my account.
 -   [x] As a user, I can upload an image or video.
 -   [x] As a user, I can view a list of all images and videos.
