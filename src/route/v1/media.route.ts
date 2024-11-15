@@ -11,6 +11,6 @@ router.get('/:page?', MediaManager.getUserUploads);
 // router.get('/:id', MediaManager.getSingleMedia);
 // router.get('/user', MediaManager.getUserMedia);
 
-// router.delete('/:id', MediaManager.deleteMedia);
+router.delete('/:id', MediaManager.delete);
 
 export default router;

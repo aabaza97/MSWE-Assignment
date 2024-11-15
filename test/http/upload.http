@@ -1,7 +1,7 @@
 > auth.http
 
 @baseURL = http://localhost:3000/api/v1/media
-@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhYWJhemEzMkBnbWFpbC5jb20iLCJkZXZpY2VfaWQiOiI3YWY0N2VmZjlmM2JkMWRmNWYxODQ5YTQwMmY2NGViNyIsImlhdCI6MTczMTY4NzQyMSwiZXhwIjoxNzMxNjg4MDIxfQ.8tewhtoweC1XhBz8c9ufbKPmP1GB_pB-tbJ8OYnUxCs
+@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhYWJhemEzMkBnbWFpbC5jb20iLCJkZXZpY2VfaWQiOiJlZWUyZWZkYjhiMGMxODFlMzhmZmQ5M2IwNmFhM2M1MyIsImlhdCI6MTczMTY5MTEwMiwiZXhwIjoxNzMxNjkxNzAyfQ.Fm4BwCyS4u2d6FgAPPnSE32F4iN5Ow513kWE5f8bSQI
 
 ### Upload Image
 PUT  {{baseURL}}/images HTTP/1.1
@@ -32,4 +32,11 @@ Content-Type: video/mp4
 @page = 0
 GET  {{baseURL}}/{{page}} HTTP/1.1
 Authorization: Bearer {{access_token}}
+Content-Type: application/json
 
+
+### Delete media
+@id = 1
+DELETE  {{baseURL}}/{{id}} HTTP/1.1
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
