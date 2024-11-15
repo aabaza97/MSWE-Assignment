@@ -17,6 +17,8 @@ module.exports = (sequelize: Sequelize) => {
 		 */
 		static associate(models: any) {
 			// define association here
+			UserLikes.belongsTo(models.User, { foreignKey: 'user_id' });
+			UserLikes.belongsTo(models.Uploads, { foreignKey: 'upload_id' });
 		}
 	}
 	UserLikes.init(
@@ -26,7 +28,7 @@ module.exports = (sequelize: Sequelize) => {
 		},
 		{
 			sequelize,
-			modelName: 'Uploads',
+			modelName: 'UserLikes',
 		}
 	);
 	return UserLikes;

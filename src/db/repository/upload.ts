@@ -29,7 +29,10 @@ export enum UploadType {
  * @returns {Promise<Upload>} - newly created upload
  * @throws {Error} - if there is an error in the database
  */
-export const addUpload = async (upload: NewDBUpload): Promise<DBUpload> => await Uploads.create(upload);
+export const addUpload = async (upload: NewDBUpload): Promise<DBUpload> => {
+	console.log('upload:', upload);
+	return await Uploads.create(upload);
+};
 
 /**
  * Finds an upload by id

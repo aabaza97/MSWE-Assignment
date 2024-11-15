@@ -7,6 +7,7 @@
 @refresh_token = {{login.response.body.data.refresh_token}}
 @password_reset_token = {{verify_reset_password.response.body.data.password_reset_token}}
 
+@wildcard = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhYWJhemEzMkBnbWFpbC5jb20iLCJkZXZpY2VfaWQiOiJkZTM1YzcwYTJhOTNlNGFlMWI3Yjc3Nzk4NGIwMWE0OCIsImlhdCI6MTczMTY5NzYzNywiZXhwIjoxNzMyNTYxNjM3fQ.TVgQjdRbhmcS0qBFHYwvvOE-ZZ9SS_7IWkBM-fAHnk0
 
 ### Send verification Email
 POST {{baseURL}}/emails/verify HTTP/1.1
@@ -27,7 +28,7 @@ Content-Type: application/json
 
 {
   "email": {{testMail}},
-  "otp": "253083"
+  "otp": "267482"
 }
 
 ### Log In 

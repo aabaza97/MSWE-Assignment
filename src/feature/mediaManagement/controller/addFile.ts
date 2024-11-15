@@ -5,7 +5,6 @@ import { Upload } from '../../../db/repository';
 
 const addFile = async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		console.log('req.uploadInfo:', req.uploadInfo);
 		// check upload info in request
 		if (!req.uploadInfo) {
 			throw errors.BadRequest('No file uploaded');
