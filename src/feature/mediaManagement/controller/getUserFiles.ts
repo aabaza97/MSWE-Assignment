@@ -18,9 +18,10 @@ const getUserUploads = async (req: Request, res: Response, next: NextFunction) =
 
 		// construct media response
 		const media = uploads.map((upload) => {
-			const { id, name, type, user_id } = upload;
+			const { id, name, type, user_id, UserLikes } = upload;
+			const isLiked = UserLikes.length === 1;
 			const downloadURL = `${process.env.HOST_DOMAIN}/${type}/${user_id}/${name}`;
-			return { id, name, type, user_id, downloadURL };
+			return { id, name, type, user_id, download_url: downloadURL, is_liked: isLiked };
 		});
 
 		// send response

@@ -1,4 +1,5 @@
-const { Uploads } = require('../model');
+const { Uploads, UserLikes } = require('../model');
+const Sequelize = require('sequelize');
 
 export interface DBUpload {
 	id: number;
@@ -13,6 +14,10 @@ export interface NewDBUpload {
 	type: string;
 	user_id: number;
 	path: string;
+}
+
+export interface UserUploads extends DBUpload {
+	UserLikes: [any];
 }
 
 export enum UploadType {
@@ -55,11 +60,26 @@ export const findUploadsByUserId = async (
 	user_id: string,
 	limit: number = 10,
 	offset: number = 0
-): Promise<DBUpload[]> => {
+): Promise<UserUploads[]> => {
 	const _limit = Math.max(limit, 10);
 	const _offset = Math.max(offset, 0);
 
-	return await Uploads.findAll({ where: { user_id }, limit: _limit, offset: _offset });
+	return await Uploads.findAll({
+		where: { user_id },
+		include: [
+			{
+				model: UserLikes,
+				attributes: ['id', 'upload_id', 'user_id'],
+				required: false, // Ensures an outer join
+				on: {
+					upload_id: Sequelize.col('Uploads.id'), // Defines the join condition
+				},
+				where: { user_id },
+			},
+		],
+		limit: _limit,
+		offset: _offset,
+	});
 };
 
 /**
