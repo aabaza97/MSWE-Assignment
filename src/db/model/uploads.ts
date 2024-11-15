@@ -23,6 +23,7 @@ module.exports = (sequelize: Sequelize) => {
 			// define association here
 			// user has many uploads
 			Uploads.belongsTo(models.User, { foreignKey: 'user_id' });
+			Uploads.belongsToMany(models.User, { through: 'UserLikes' });
 		}
 	}
 	Uploads.init(

@@ -1,7 +1,7 @@
 > auth.http
 
 @baseURL = http://localhost:3000/api/v1/media
-@access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhYWJhemEzMkBnbWFpbC5jb20iLCJkZXZpY2VfaWQiOiJlZWUyZWZkYjhiMGMxODFlMzhmZmQ5M2IwNmFhM2M1MyIsImlhdCI6MTczMTY5MTEwMiwiZXhwIjoxNzMxNjkxNzAyfQ.Fm4BwCyS4u2d6FgAPPnSE32F4iN5Ow513kWE5f8bSQI
+@access_token = yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhYWJhemEzMkBnbWFpbC5jb20iLCJkZXZpY2VfaWQiOiJkMmQxYjMyZGRjMjIwMGUyODc4NWI4N2Y0Nzk3Njc0YiIsImlhdCI6MTczMTY5MjgzMCwiZXhwIjoxNzMxNjkzNDMwfQ.GsFjjZkcep4qQ3wegQxcZB9TZ17h0CjXvgxqIdPGM68
 
 ### Upload Image
 PUT  {{baseURL}}/images HTTP/1.1

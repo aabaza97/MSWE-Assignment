@@ -41,13 +41,18 @@ const handleOAuth = async (req: Request, res: Response, next: NextFunction) => {
 
 		// Get access & refresh token (login)
 		const tokens = await generateAuthTokens(dbUser);
-
+		req.response = {
+			status: 200,
+			message: 'msg_login_success',
+			data: { ...dbUser, access_token: tokens.accessToken, refresh_token: tokens.refreshToken },
+		};
+		next();
 		// Send response
 		// return res.render('OAuthSuccess', { user: dbUser, tokens }, (err, html) => {
 		// 	if (err) throw err;
 		// 	res.send(html);
 		// });
-		return res.sendFile(path.join(__dirname, '../../../../../../public/view/oAuthSucess.html'));
+		// return res.sendFile(path.join(__dirname, '../../../../../../public/view/oAuthSucess.html'));
 	} catch (error) {
 		console.log(error);
 		return next(error);
