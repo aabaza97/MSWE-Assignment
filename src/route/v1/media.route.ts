@@ -7,10 +7,10 @@ const router = Router();
 router.put('/images', MediaUploader.uploadImage, MediaManager.save);
 router.put('/movies', MediaUploader.uploadMovie, MediaManager.save);
 
-router.get('/', MediaManager.getAllMedia);
-router.get('/:id', MediaManager.getSingleMedia);
-router.get('/user', MediaManager.getUserMedia);
+// router.get('/', MediaManager.getAllMedia);
+// router.get('/:id', MediaManager.getSingleMedia);
+// router.get('/user', MediaManager.getUserMedia);
 
-router.delete('/:id', MediaManager.deleteMedia);
+// router.delete('/:id', MediaManager.deleteMedia);
 
 export default router;

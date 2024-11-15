@@ -16,6 +16,8 @@ const errorHandler = (err: Error, req: Request, res: Response, next: NextFunctio
 		return;
 	}
 
+	console.error(err);
+
 	let error = err;
 	if (err.name === 'JsonWebTokenError') error = errors.Unauthorized('msg_invalid_token');
 	if (!err.status) error = errors.InternalServerError('msg_unknown_error');

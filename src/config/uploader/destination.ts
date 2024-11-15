@@ -2,7 +2,10 @@ import fs from 'fs';
 import errors from 'http-errors';
 import { Request } from 'express';
 
-type CustomDestination = (req: Request, file: Express.Multer.File) => { storage: string; uploadPath: string };
+type CustomDestination = (
+	req: Request,
+	file: Express.Multer.File
+) => { storage: string; uploadPath: string; uploadType: string };
 type MulterCB = (error: Error | null, destination: string) => void;
 
 /**
@@ -31,12 +34,14 @@ const dest = (customDestination: CustomDestination) => (req: Request, file: Expr
 		}
 
 		// destructure validated payload and custom destination folder if provided else use default values
-		const { storage = 'root', uploadPath = '../../../storage/' } = customDestination
-			? customDestination(req, file) ?? {}
-			: {};
+		const {
+			storage = 'root',
+			uploadPath = '../../../storage/',
+			uploadType = 'file',
+		} = customDestination ? customDestination(req, file) ?? {} : {};
 
 		// append storage to request object
-		req.uploadInfo = { storage, uploadPath };
+		req.uploadInfo = { storage, uploadPath, uploadType };
 
 		// create destination folder with user id, username and timestamp
 		if (!fs.existsSync(uploadPath)) {

@@ -1,4 +1,4 @@
-const { Upload } = require('../model');
+const { Uploads } = require('../model');
 
 export interface DBUpload {
 	id: number;
@@ -29,7 +29,7 @@ export enum UploadType {
  * @returns {Promise<Upload>} - newly created upload
  * @throws {Error} - if there is an error in the database
  */
-export const addUpload = async (upload: NewDBUpload): Promise<DBUpload> => await Upload.create(upload);
+export const addUpload = async (upload: NewDBUpload): Promise<DBUpload> => await Uploads.create(upload);
 
 /**
  * Finds an upload by id
@@ -39,7 +39,7 @@ export const addUpload = async (upload: NewDBUpload): Promise<DBUpload> => await
  * @throws {Error} - if upload with the given id is not found
  * @throws {Error} - if there is an error in the database
  */
-export const findUploadById = async (id: number): Promise<DBUpload> => await Upload.findByPk(id);
+export const findUploadById = async (id: number): Promise<DBUpload> => await Uploads.findByPk(id);
 
 /**
  * Finds all uploads by user id
@@ -49,7 +49,7 @@ export const findUploadById = async (id: number): Promise<DBUpload> => await Upl
  * @throws {Error} - if there is an error in the database
  */
 export const findUploadsByUserId = async (user_id: string): Promise<DBUpload[]> =>
-	await Upload.findAll({ where: { user_id } });
+	await Uploads.findAll({ where: { user_id } });
 
 /**
  * Deletes an upload by id
@@ -59,7 +59,7 @@ export const findUploadsByUserId = async (user_id: string): Promise<DBUpload[]> 
  * @throws {Error} - if there is an error in the database
  */
 export const deleteUpload = async (id: number): Promise<DBUpload> => {
-	const upload = await Upload.findByPk(id);
+	const upload = await Uploads.findByPk(id);
 	await upload.destroy();
 	return upload;
 };

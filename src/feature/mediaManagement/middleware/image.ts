@@ -27,7 +27,7 @@ const imageDestination = (req: Request, file: Express.Multer.File) => {
 	const { user_id: userId } = validate(req);
 
 	// create custom destination folder with user id
-	const uploadPath = `../../../public/storage/${storage}/${userId}`;
+	const uploadPath = `../../../../public/storage/${storage}/${userId}`;
 
 	return {
 		storage,

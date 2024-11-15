@@ -5,6 +5,7 @@ import { Upload } from '../../../db/repository';
 
 const addFile = async (req: Request, res: Response, next: NextFunction) => {
 	try {
+		console.log('req.uploadInfo:', req.uploadInfo);
 		// check upload info in request
 		if (!req.uploadInfo) {
 			throw errors.BadRequest('No file uploaded');
@@ -17,6 +18,7 @@ const addFile = async (req: Request, res: Response, next: NextFunction) => {
 		// get file info
 		const { storage, uploadPath, filename, uploadType } = req.uploadInfo;
 
+		console.dir(req.uploadInfo);
 		if (!storage || !uploadPath || !filename || !uploadType) {
 			throw errors.BadRequest('Missing file information');
 		}
@@ -31,14 +33,18 @@ const addFile = async (req: Request, res: Response, next: NextFunction) => {
 		// save file info to database
 		const newFile = await Upload.addUpload(file);
 
+		// construct download url
+		const donwloadURL = `${process.env.HOST_DOMAIN}/image/${req.user.id}/${newFile.name}`;
+
 		// send response
 		req.response = {
 			status: 201,
 			message: 'File uploaded successfully',
-			data: newFile,
+			data: { donwloadURL },
 		};
 		next();
 	} catch (error) {
+		console.dir(error);
 		next(error);
 	}
 };
