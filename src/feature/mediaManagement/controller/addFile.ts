@@ -17,7 +17,6 @@ const addFile = async (req: Request, res: Response, next: NextFunction) => {
 		// get file info
 		const { storage, uploadPath, filename, uploadType } = req.uploadInfo;
 
-		console.dir(req.uploadInfo);
 		if (!storage || !uploadPath || !filename || !uploadType) {
 			throw errors.BadRequest('Missing file information');
 		}

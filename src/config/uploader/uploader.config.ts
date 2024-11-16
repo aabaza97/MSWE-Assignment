@@ -20,16 +20,24 @@ type FileFilter = (file: Express.Multer.File, callback: FileFilterCallback) => v
  * @param {Function} destination – the function providing destination folder
  * @param {Function} filename – the function providing file name
  * @param {Function} fileFilter – the function providing file filter
+ * @param {number} fileSize – the maximum file size	(default: 20MB)
+ * @param {number} fileLimit – the maximum file limit (default: 1)
  */
-const uploader = (destination: Destination, filename: Filename, fileFilter: FileFilter) =>
+const uploader = (
+	destination: Destination,
+	filename: Filename,
+	fileFilter: FileFilter,
+	fileSize: number = 20 * 1024 * 1024,
+	fileLimit: number = 1
+) =>
 	multer({
 		storage: multer.diskStorage({
 			destination,
 			filename,
 		}),
 		limits: {
-			fileSize: 20 * 1024 * 1024, // max of 2MB per file
-			files: 1, // max of 6 images to upload per request
+			fileSize: fileSize, // max of 2MB per file
+			files: fileLimit, // max of 6 images to upload per request
 		},
 		fileFilter: (req, file, callback) => fileFilter(file, callback),
 	});

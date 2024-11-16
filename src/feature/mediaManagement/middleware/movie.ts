@@ -22,24 +22,24 @@ const validate = (req: Request) => {
 /**
  * Custom destination folder
  */
-const imageDestination = (req: Request, file: Express.Multer.File) => {
+const movieDestination = (req: Request, file: Express.Multer.File) => {
 	// validate payload
 	const { user_id: userId } = validate(req);
 
 	// create custom destination folder with user id
-	const uploadPath = `../../../public/storage/${storage}/${userId}`;
+	const uploadPath = `../../../../public/storage/${storage}/${userId}`;
 
 	return {
 		storage,
 		uploadPath: path.join(__dirname, uploadPath).toString(),
-		uploadType: Upload.UploadType.IMAGE,
+		uploadType: Upload.UploadType.VIDEO,
 	};
 };
 
 /**
  * Custom file name
  */
-const imageFilename = (req: Request, file: Express.Multer.File) =>
+const movieFilename = (req: Request, file: Express.Multer.File) =>
 	// create file name with originalname and timestamp in the format: timestamp-originalname replacing spaces with underscores.
 	// e.g. 1628180000000-image_name.png
 	`${Date.now()}-${file.originalname.replace(/ /g, '_')}`;
@@ -49,7 +49,8 @@ const imageFilename = (req: Request, file: Express.Multer.File) =>
  */
 
 export default Uploader.uploadTo(
-	Uploader.destination(imageDestination),
-	Uploader.filename(imageFilename),
-	Uploader.FileFilter.imageFilter
+	Uploader.destination(movieDestination),
+	Uploader.filename(movieFilename),
+	Uploader.FileFilter.movieFilter,
+	100 * 1024 * 1024 // max of 100MB per file
 ).single(storage);

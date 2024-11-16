@@ -18,7 +18,7 @@ const fileFilter = async (file: Express.Multer.File, cb: any) => {
 		return cb(null, true);
 	} catch (error: Error | any) {
 		// console.error(error);
-		return cb({ error: error.message });
+		return cb(error);
 	}
 };
 
