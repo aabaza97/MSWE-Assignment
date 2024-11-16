@@ -1,0 +1,50 @@
+# app
+NODE_ENV=development
+PORT=3000
+HOST_DOMAIN=http://localhost:8080 #https:/some-domain.com
+
+# redis 
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379
+
+
+DB_USERNAME=root
+DB_PASSWORD=
+DB_HOST=127.0.0.1
+DB_DEV_DATABASE=
+DB_TEST_DATABASE=
+DB_PROD_DATABASE=
+
+# client app signing token (for app authentication)
+CLIENT_APP_SIGNING_TOKEN=
+
+# authentication maximum devices per user
+MAX_ALLOWED_DEVICES=4
+
+# email verification token
+JWT_EMAIL_VERIFICATION_TOKEN_SECRET=
+JWT_EMAIL_VERIFICATION_TOKEN_EXPIRY=1d
+
+# authentication access token 
+JWT_ACCESS_TOKEN_SECRET=
+JWT_ACCESS_TOKEN_EXPIRY=10m 
+
+# authentication refresh token
+JWT_REFRESH_TOKEN_SECRET=
+JWT_REFRESH_TOKEN_EXPIRY=10d
+
+# password reset access token
+PASSWORD_RESET_TOKEN_SECRET=
+PASSWORD_RESET_TOKEN_TIME=5m
+
+
+# google configurations (Use google cloud to create consent screen and credentials
+)
+GOOGLE_OAUTH_CLIENT_ID=
+GOOGLE_OAUTH_CLIENT_SECRET=
+GOOGLE_OAUTH_REDIR_URI=http://localhost:3000/api/v1/auth/google
+
+
+# email configuration
+MAIL_APP_PWD=
+MAIL_APP_USER=

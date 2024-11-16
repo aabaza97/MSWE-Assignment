@@ -70,11 +70,11 @@ The app is structured in the following way:
 
 1.  Clone the repository.
 2.  Install the dependencies using `npm install`.
-3.  Create a `.env` file in the root directory following the `env.example` file.
+3.  Create a `.env` file in the root directory following the [`env.example`](./README/env) file.
 4.  Start MySQL server.
 5.  Start Redis server.
 6.  Run the database migrations using `npm run db:create` then `npm run db:reset`.
-7.  Configure Nginx to serve the static files and reverse proxy the API server following the `nginx.conf` file. NOTE: NGINX configuration location differs based on the OS.
+7.  Configure Nginx to serve the static files and reverse proxy the API server following the [`nginx.conf`](./README/nginx.conf) file. NOTE: NGINX configuration location differs based on the OS.
 8.  Start NGINX server.
 9.  Start the app using `npm run start`.
 10. Visit `http://localhost:3000/api/v1/docs` to view the API documentation.
