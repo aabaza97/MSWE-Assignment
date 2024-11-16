@@ -1,5 +1,7 @@
-import { Request, Response, NextFunction, Error } from 'express';
+import e, { Request, Response, NextFunction, Error } from 'express';
 import errors from 'http-errors';
+import { JsonWebTokenError } from 'jsonwebtoken';
+import multer from 'multer';
 
 /**
  * Handles errors that occur during API requests and sends appropriate error responses.
@@ -19,9 +21,15 @@ const errorHandler = (err: Error, req: Request, res: Response, next: NextFunctio
 	console.dir(err);
 
 	let error = err;
-	if (err.name === 'JsonWebTokenError' || err.name === 'TokenExpiredError')
+
+	// Handle specific error types
+	if (err instanceof JsonWebTokenError) {
 		error = errors.Unauthorized('msg_invalid_token');
-	else if (!err.status) error = errors.InternalServerError('msg_unknown_error');
+	} else if (err instanceof multer.MulterError) {
+		error = errors.UnprocessableEntity(err.message);
+	} else {
+		error = errors.InternalServerError('msg_unknown_error');
+	}
 
 	// Send the error message
 	res.status(error.status || 500).json({
