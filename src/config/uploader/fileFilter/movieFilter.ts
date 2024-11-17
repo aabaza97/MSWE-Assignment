@@ -6,8 +6,8 @@ import errors from 'http-errors';
 const fileFilter = async (file: Express.Multer.File, cb: any) => {
 	try {
 		// Type filter
-		const allowedExts = /mp4|mpeg|mpeg4|mov/;
-		const allowedMimes = /mp4|mpeg|mpeg4|mov/;
+		const allowedExts = /mp4|mpeg4|mov/;
+		const allowedMimes = /mp4|mpeg4|mov/;
 		const fileNameHasValidExtension = allowedExts.test(path.extname(file.originalname).toLowerCase());
 		const fileHasValidMimeType = allowedMimes.test(file.mimetype);
 

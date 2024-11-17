@@ -6,6 +6,7 @@ import errors from 'http-errors';
 const fileFilter = async (file: Express.Multer.File, cb: any) => {
 	try {
 		// Type filter
+		console.log('file: ', file);
 		const allowedExts = /jpg|jpeg/;
 		const allowedMimes = /jpeg|jpg/;
 		const fileNameHasValidExtension = allowedExts.test(path.extname(file.originalname).toLowerCase());

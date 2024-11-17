@@ -38,7 +38,7 @@ const addFile = async (req: Request, res: Response, next: NextFunction) => {
 		req.response = {
 			status: 201,
 			message: 'File uploaded successfully',
-			data: { donwloadURL },
+			data: { download_url: donwloadURL },
 		};
 		next();
 	} catch (error) {
