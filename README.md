@@ -50,9 +50,23 @@ The app is structured in the following way:
 
 The use of this strcture has a certain advantage beyond organization, modularity and separation of concerns. It allows easy exploration of the app so that almost anyone can understand the app structure and make changes easily.
 
+## General Architecture
+
+![General Monolith Arch](README/baseArch.png)
+
+The app is a monolithic architecture that consists of the following components:
+
+-   API Server: serves the API endpoints.
+-   Database: stores the user information, uploaded media information, and likes information.
+-   Redis: stores the user sessions.
+-   Nginx: reverse proxy server, load balancer, and static file server.
+-   BullMQ: processes the email jobs.
+-   SMTP Server: sends the email notifications.
+-   Third-party Providers: provides the OAuth authentication.
+
 ## DB Schema
 
-![alt text](README/erd.png)
+![Database Schema](README/erd.png)
 
 The database schema consists of the following tables:
 
