@@ -48,9 +48,21 @@ The app is structured in the following way:
 -   .env: contains the environment variables of the app.
 -   copyView.js: copies the views to the public folder since typescript does not compile the views.
 
+The use of this strcture has a certain advantage beyond organization, modularity and separation of concerns. It allows easy exploration of the app so that almost anyone can understand the app structure and make changes easily.
+
 ## DB Schema
 
 ![alt text](README/erd.png)
+
+The database schema consists of the following tables:
+
+-   users: contains the user information.
+-   uploads: contains the uploaded media information.
+-   likes: contains the likes information.
+
+The use of this schema is to store the user information, uploaded media information, and likes information however the schema can be extended to store more information. For example, the users table can be extended with a simple modification to support extra providers for third-party authentication. This can be done through an additional table that stores the provider information and the user id.
+
+The use of relational database simply because it is more structured and provides better performance for complex queries. The use of MySQL is because it is more popular and has better support for the ORM used in the app.
 
 ## Tech Stack
 
@@ -64,7 +76,6 @@ The app is structured in the following way:
 -   MySQL DB
 -   Nginx: reverse proxy server, load balancer, and static file server.
 -   Swagger: API documentation.
--
 
 ## Installation
 
@@ -79,6 +90,25 @@ The app is structured in the following way:
 9.  Start the app using `npm run start`.
 10. Visit `http://localhost:3000/api/v1/docs` to view the API documentation.
 
+## API Endpoints
+
+For the API endpoints, visit the [`API Endpoints`](./test/http) folder.
+
+They're structured in resource-based endpoints.
+
 ## API Documentation
 
 The API documentation is generated using Swagger. Visit `http://localhost:3000/api/v1/docs` to view the API documentation.
+
+## Performance Measures
+
+-   The use of Redis for caching the user sessions is to improve the performance of the app by reducing the number of database queries.
+-   The use of BullMQ for processing the email jobs is to improve the performance of the app by offloading the email sending process to a separate worker.
+-   The use of Nginx to serve the static files is to improve the performance of the app by reducing the load on the API server.
+-   The app is horizontally scalable by running multiple instances of the app behind a load balancer.
+
+## Security Measures
+
+-   The use of JWT for authentication is to secure the app by generating a token for the user.
+-   The use of OAuth for authentication is to secure the app by allowing the user to authenticate using a third-party provider.
+-   The use of CORS is to secure the app by allowing only specific origins to access the app.
