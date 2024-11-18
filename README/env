@@ -48,3 +48,8 @@ GOOGLE_OAUTH_REDIR_URI=http://localhost:3000/api/v1/auth/google
 # email configuration
 MAIL_APP_PWD=
 MAIL_APP_USER=
+
+
+# upload configurations
+UPLOAD_DIR=uploads
+MOVIE_MAX_FILE_SIZE_MB=10

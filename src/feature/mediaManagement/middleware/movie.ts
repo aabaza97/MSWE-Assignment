@@ -52,5 +52,5 @@ export default Uploader.uploadTo(
 	Uploader.destination(movieDestination),
 	Uploader.filename(movieFilename),
 	Uploader.FileFilter.movieFilter,
-	100 * 1024 * 1024 // max of 100MB per file
+	1000 * 1024 * 1024 // max of 100MB per file
 ).single(storage);
