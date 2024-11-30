@@ -22,13 +22,15 @@ const errorHandler = (err: Error, req: Request, res: Response, next: NextFunctio
 
 	let error = err;
 
-	// Handle specific error types
-	if (err instanceof JsonWebTokenError) {
-		error = errors.Unauthorized('msg_invalid_token');
-	} else if (err instanceof multer.MulterError) {
-		error = errors.UnprocessableEntity(err.message);
-	} else {
-		error = errors.InternalServerError('msg_unknown_error');
+	// Handle specific error types and set the status code if necessary
+	if (!err.status) {
+		if (err instanceof JsonWebTokenError) {
+			error = errors.Unauthorized('msg_invalid_token');
+		} else if (err instanceof multer.MulterError) {
+			error = errors.UnprocessableEntity(err.message);
+		} else {
+			error = errors.InternalServerError('msg_unknown_error');
+		}
 	}
 
 	// Send the error message
