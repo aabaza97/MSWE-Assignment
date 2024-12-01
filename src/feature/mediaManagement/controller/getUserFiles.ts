@@ -15,11 +15,10 @@ const getUserUploads = async (req: Request, res: Response, next: NextFunction) =
 
 		// get user uploads
 		const uploads = await Upload.findUploadsByUserId(req.user.id.toString(), pageSize, parseInt(page) * pageSize);
-
 		// construct media response
 		const media = uploads.map((upload) => {
 			const { id, name, type, user_id, UserLikes } = upload;
-			const isLiked = UserLikes.length === 1;
+			const isLiked = UserLikes.filter((like) => like.user_id === user_id && like.upload_id === id).length === 1;
 			const downloadURL = `${process.env.HOST_DOMAIN}/${type}/${user_id}/${name}`;
 			return { id, name, type, user_id, download_url: downloadURL, is_liked: isLiked };
 		});
