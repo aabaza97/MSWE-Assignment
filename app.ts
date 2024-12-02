@@ -18,6 +18,17 @@ app.use(Express.urlencoded({ extended: true }));
 app.post('*', Express.json());
 app.put('*', Express.json());
 
+app.use((req, res, next) => {
+	console.log('––––––––––––––––– REQUEST –––––––––––––––––');
+	console.log('Request:', req.method, req.path, '\n');
+	console.log('Headers:', req.headers);
+	console.log('Body:', req.body);
+	console.log('Query:', req.query);
+	console.log('Params:', req.params);
+	console.log('––––––––––––––––– End of Request –––––––––––––––––');
+	next();
+});
+
 // Use the main app router
 app.use('/api', AppRouter);
 
