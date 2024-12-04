@@ -31,6 +31,7 @@ const refreshAccessToken = async (req: Request, res: Response, next: NextFunctio
 			message: 'msg_access_token_refreshed',
 			data: {
 				access_token: accessToken,
+				ttl: process.env.JWT_ACCESS_TOKEN_EXPIRY,
 			},
 		};
 

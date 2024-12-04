@@ -56,7 +56,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
 		await Redis.invalidate.dataForEmailVerification(email);
 
 		// Generate auth tokens
-		const { accessToken, refreshToken } = await generateAuthTokens(createdUser);
+		const { accessToken, refreshToken, ttl } = await generateAuthTokens(createdUser);
 
 		// Send welcome email
 		// await mailer.sendAccountCreationEmail(firstName, email);
@@ -72,6 +72,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
 				email: createdUser.email,
 				access_token: accessToken,
 				refresh_token: refreshToken,
+				ttl,
 			},
 		};
 

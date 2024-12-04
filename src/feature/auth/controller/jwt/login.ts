@@ -42,7 +42,7 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<v
 		}
 
 		// Generate auth tokens
-		const { accessToken, refreshToken } = await generateAuthTokens(user);
+		const { accessToken, refreshToken, ttl } = await generateAuthTokens(user);
 
 		// Send response
 		req.response = {
@@ -55,6 +55,7 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<v
 				email: user.email,
 				access_token: accessToken,
 				refresh_token: refreshToken,
+				ttl,
 			},
 		};
 

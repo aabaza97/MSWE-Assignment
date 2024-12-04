@@ -54,7 +54,7 @@ const generateAuthTokens = async (user: { id: number; email: string }) => {
 	});
 
 	// Return tokens
-	return { accessToken, refreshToken };
+	return { accessToken, refreshToken, ttl: process.env.JWT_ACCESS_TOKEN_EXPIRY };
 };
 
 export default generateAuthTokens;
