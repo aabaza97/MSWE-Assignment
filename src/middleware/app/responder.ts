@@ -1,6 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 import errors from 'http-errors';
 
+// Log the response
+const logResponse = (req: Request, res: Response) => {
+	console.log('––––––––––––––––– RESPONSE –––––––––––––––––');
+	console.log('Response:', req.response);
+	console.log('Headers:', res.getHeaders());
+	console.log('––––––––––––––––– End of Response –––––––––––––––––');
+};
+
 /**
  * Middleware function to handle the response object in the request.
  *
@@ -20,6 +28,9 @@ const responder = (req: Request, res: Response, next: NextFunction) => {
 	try {
 		if (req.response) {
 			const { message, status, data } = req.response;
+
+			// Log the response
+			logResponse(req, res);
 
 			if (data) {
 				res.status(status).json({
