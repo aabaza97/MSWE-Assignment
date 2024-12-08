@@ -1,0 +1,54 @@
+{
+	"paths": {
+		"/likes/{id}": {
+			"post": {
+				"summary": "Like a post",
+				"tags": ["Likes"],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Post liked successfully"
+					}
+				}
+			},
+			"delete": {
+				"summary": "Unlike a post",
+				"tags": ["Likes"],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Post unliked successfully"
+					}
+				}
+			}
+		}
+	}
+}

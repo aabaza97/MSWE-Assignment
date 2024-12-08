@@ -1,0 +1,232 @@
+{
+	"paths": {
+		"/auth/emails/verify": {
+			"post": {
+				"summary": "Send verification email",
+				"tags": ["Auth"],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"email": {
+										"type": "string",
+										"example": "user@example.com"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Verification email sent"
+					}
+				}
+			}
+		},
+		"/auth/register": {
+			"post": {
+				"summary": "Register a new user",
+				"tags": ["Auth"],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"email": {
+										"type": "string",
+										"example": "user@example.com"
+									},
+									"otp": {
+										"type": "string",
+										"example": "123456"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "User registered successfully"
+					}
+				}
+			}
+		},
+		"/auth/login": {
+			"post": {
+				"summary": "Login a user",
+				"tags": ["Auth"],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"email": {
+										"type": "string",
+										"example": "user@example.com"
+									},
+									"password": {
+										"type": "string",
+										"example": "password123"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "User logged in successfully"
+					}
+				}
+			}
+		},
+		"/auth/logout": {
+			"post": {
+				"summary": "Logout a user",
+				"tags": ["Auth"],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "User logged out successfully"
+					}
+				}
+			}
+		},
+		"/auth/forgot-password": {
+			"post": {
+				"summary": "Send reset password email",
+				"tags": ["Auth"],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"email": {
+										"type": "string",
+										"example": "user@example.com"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Reset password email sent"
+					}
+				}
+			}
+		},
+		"/auth/forgot-password/verify": {
+			"post": {
+				"summary": "Verify OTP to reset password",
+				"tags": ["Auth"],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"email": {
+										"type": "string",
+										"example": "user@example.com"
+									},
+									"otp": {
+										"type": "string",
+										"example": "123456"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "OTP verified successfully"
+					}
+				}
+			}
+		},
+		"/auth/forgot-password/reset": {
+			"post": {
+				"summary": "Reset password",
+				"tags": ["Auth"],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"password": {
+										"type": "string",
+										"example": "newpassword123"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Password reset successfully"
+					}
+				}
+			}
+		},
+		"/tokens/refresh": {
+			"post": {
+				"summary": "Refresh access token",
+				"tags": ["Auth"],
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Access token refreshed successfully"
+					}
+				}
+			}
+		},
+		"/google/access-request": {
+			"get": {
+				"summary": "Get OAuth URL",
+				"tags": ["Auth"],
+				"responses": {
+					"200": {
+						"description": "OAuth URL retrieved successfully"
+					}
+				}
+			}
+		},
+		"/google": {
+			"get": {
+				"summary": "Handle OAuth",
+				"tags": ["Auth"],
+				"responses": {
+					"200": {
+						"description": "OAuth handled successfully"
+					}
+				}
+			}
+		}
+	}
+}

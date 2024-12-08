@@ -102,7 +102,7 @@ The use of relational database simply because it is more structured and provides
 7.  Configure Nginx to serve the static files and reverse proxy the API server following the [`nginx.conf`](./README/nginx.conf) file. NOTE: NGINX configuration location differs based on the OS.
 8.  Start NGINX server.
 9.  Start the app using `npm run start`.
-10. Visit `http://localhost:3000/api/v1/docs` to view the API documentation.
+10. Visit `http://localhost:PORT/api/v1/docs` to view the API documentation.
 
 ## API Endpoints
 
@@ -112,7 +112,7 @@ They're structured in resource-based endpoints.
 
 ## API Documentation
 
-The API documentation is generated using Swagger. Visit `http://localhost:3000/api/v1/docs` to view the API documentation.
+The API documentation is generated using Swagger. Visit `http://localhost:PORT/api/v1/docs` to view the API documentation.
 
 ## Performance Measures
 
